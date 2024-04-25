@@ -10,7 +10,8 @@ struct Node
 
 Node* START = NULL;
 
-void addNode() {
+void addNode()
+{
     int nim;
     string nama;
     Node* nodeBaru = new Node();
@@ -46,3 +47,21 @@ void addNode() {
         previous = current;
         current = current->next;
     }   
+
+    nodeBaru->next = current;
+    previous->next = nodeBaru;
+}
+
+bool serachNode(int nim, Node* current, Node previous) {
+    previous = START;
+    current = START;
+    while (current != NULL && nim > current->noMhs)
+    {
+        previous = current;
+        current = current->next;
+    }
+
+    if (current == NULL)
+    {
+        return false;
+    }
